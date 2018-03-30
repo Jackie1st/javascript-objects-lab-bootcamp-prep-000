@@ -1,23 +1,19 @@
 var recipes = {};
-function updateObjectWithKeyAndValue(recipes, key, value) {
-  Object.assign({}, recipes, {[key]: value})
+function updateObjectWithKeyAndValue(object, key, value) {
+  return Object.assign({}, object, {[key]: value})
 }
-function updateObjectWithKeyAndValue(recipe, key, value) {
-  var newRecipe = {prop: 1, prop2: 2};
+function destructivelyUpdateObjectWithKeyAndValue(object, key, value) {
+  object[key] = value; 
+  return value;
 }
-function destructivelyUpdateObjectWithKeyAndValue(recipe, key, value) {
-  recipe[key] = value; 
-  recipe = {prop: 1, prop2: 2, prop3: 3};
-  return recipe;
-}
-function deleteFromObjectByKey(recipe, key) {
-    var draftRecipe = Object.assign({}, recipe)
-    delete draftRecipe.prop;
-    return draftRecipe;
+function deleteFromObjectByKey(object, key) {
+    var clone = Object.assign({}, object)
+    delete clone.key;
+    return clone;
   }
-  function destructivelyDeleteFromObjectByKey(recipe, key) {
-      delete recipe.prop;
-      return recipe;
+  function destructivelyDeleteFromObjectByKey(object, key) {
+      delete object.key;
+      return object;
   }
-  function destructivelyDeleteFromObjectByKey(recipe, key) {}
+ 
   
